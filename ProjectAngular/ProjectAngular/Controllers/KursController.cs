@@ -15,10 +15,12 @@ namespace ProjectAngular.Controllers
         {
         }
 
+        //This is endpoint
         [HttpGet]
+        [Route("getMessage")]
         public IActionResult GetMessage()
         {
-
+            return Ok();
         }
 
     }
