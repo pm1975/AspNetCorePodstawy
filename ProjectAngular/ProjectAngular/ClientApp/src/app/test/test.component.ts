@@ -18,7 +18,10 @@ export class TestComponent implements OnInit {
   sendRequestToBackend() {
     this.http.get("https://localhost:44364/" + "kurs" + "/nazwaendpointa").subscribe(response => {
       this.backendResponse = response.toString();
-    })
+    },
+      error => {
+        this.backendResponse = error;
+      })
   }
 
 }
