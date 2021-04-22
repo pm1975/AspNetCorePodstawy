@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,13 +10,13 @@ export class TestComponent implements OnInit {
 
   backendResponse: string;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   sendRequestToBackend() {
-
+    this.http.get("https://localhost:44364/" + "kurs" + "/nazwaendpointa")
   }
 
 }
