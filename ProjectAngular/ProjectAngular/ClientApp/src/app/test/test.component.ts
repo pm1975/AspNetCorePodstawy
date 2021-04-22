@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
 
+  backendResponse: string;
+
   constructor() { }
 
   ngOnInit(): void {
