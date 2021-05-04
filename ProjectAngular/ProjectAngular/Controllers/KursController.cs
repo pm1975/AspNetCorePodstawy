@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +21,16 @@ namespace ProjectAngular.Controllers
         [Route("getMessage")]
         public IActionResult GetMessage()
         {
-            var message = new { message = "Hej, jestem backendowcem!" };
+            var message = new Message
+            {
+                Content = "Hej, jestem backendowcem!",
+                Author = "Piotr Mierniczak"
+            };
 
+            var serializedMessage = JsonConvert.SerializeObject(message);
+            
+            var deserializedMessage = JsonConvert.DeserializeObject<Message>(serializedMessage);
+            
             return Ok(message);
         }
 
