@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
@@ -12,8 +13,11 @@ namespace ProjectAngular.Controllers
     [Route("kurs")]
     public class KursController : ControllerBase
     {
-        public KursController()
+        private readonly IConfiguration _configuration;
+
+        public KursController(IConfiguration configuration)
         {
+            _configuration = configuration;
         }
 
         //This is endpoint
@@ -21,9 +25,11 @@ namespace ProjectAngular.Controllers
         [Route("getMessage")]
         public IActionResult GetMessage()
         {
+            var refreshTime = _configuration.GetValue<int>("Application:RefreshTime");
+
             var message = new Message
             {
-                Content = "Hej, jestem backendowcem!",
+                Content = $"My refresh time is: {refreshTime}",
                 Author = "Piotr Mierniczak"
             };
 
