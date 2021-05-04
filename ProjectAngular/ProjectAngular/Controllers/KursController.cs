@@ -20,7 +20,9 @@ namespace ProjectAngular.Controllers
         [Route("getMessage")]
         public IActionResult GetMessage()
         {
-            return Ok();
+            var message = new { message = "Hej, jestem backendowcem!" };
+
+            return Ok(message);
         }
 
     }
