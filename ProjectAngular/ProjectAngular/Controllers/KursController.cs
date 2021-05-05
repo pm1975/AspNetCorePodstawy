@@ -32,13 +32,15 @@ namespace ProjectAngular.Controllers
                 Content = $"My refresh time is: {refreshTime}",
                 Author = "Piotr Mierniczak"
             };
-
-            var serializedMessage = JsonConvert.SerializeObject(message);
-            
-            var deserializedMessage = JsonConvert.DeserializeObject<Message>(serializedMessage);
-            
+           
             return Ok(message);
         }
 
+        [HttpPost]
+        [Route("sendMessage")]
+        public IActionResult SendMessage([FromBody]Message message)
+        {
+            return Ok(message);
+        }
     }
 }
