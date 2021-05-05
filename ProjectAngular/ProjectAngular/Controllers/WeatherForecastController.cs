@@ -24,8 +24,10 @@ namespace ProjectAngular.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<IEnumerable<WeatherForecast>> Get()
         {
+            await DoSomething();
+
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
@@ -34,6 +36,11 @@ namespace ProjectAngular.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        public async Task DoSomething()
+        {
+            await Task.Delay(1000);
         }
     }
 }
