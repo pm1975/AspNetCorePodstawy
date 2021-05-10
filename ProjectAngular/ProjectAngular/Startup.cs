@@ -1,3 +1,4 @@
+using KursAspNetCorePodstawyBackendu.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -5,6 +6,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace ProjectAngular
 {
@@ -20,6 +23,14 @@ namespace ProjectAngular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //1. Dependency injection
+            //2. If you don't see UseSqlServer, click right mouse button on solution
+            //and choose restore NuGet packages
+            services.AddDbContext<ApplicationDbContext>(x => 
+            x.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddTransient<IMessagesRepository, MessagesRepository>();
+
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -29,7 +40,7 @@ namespace ProjectAngular
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -70,6 +81,8 @@ namespace ProjectAngular
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            serviceProvider.GetRequiredService<ApplicationDbContext>().Database.EnsureCreated();
         }
     }
 }
