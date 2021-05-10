@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace ProjectAngular
 {
@@ -28,6 +29,8 @@ namespace ProjectAngular
             //and choose restore NuGet packages
             services.AddDbContext<ApplicationDbContext>(x => 
             x.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>();
 
             services.AddTransient<IMessagesRepository, MessagesRepository>();
 
