@@ -1,4 +1,5 @@
 ﻿using KursAspNetCorePodstawyBackendu.Database;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -21,6 +22,13 @@ namespace ProjectAngular.Controllers
         {
             _configuration = configuration;
             _messagesRepository = messagesRepository;
+        }
+
+        [Authorize("Administrator")]
+        [Route("getSomeSecretData")]
+        public IActionResult GetSomeSecretData()
+        {
+            return Ok("SomeSecretKey");
         }
 
         //This is endpoint

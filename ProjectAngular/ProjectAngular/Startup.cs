@@ -30,7 +30,11 @@ namespace ProjectAngular
             services.AddDbContext<ApplicationDbContext>(x => 
             x.UseSqlServer(Configuration.GetConnectionString("Default")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+            {
+                config.SignIn.RequireConfirmedEmail = true;
+            })
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddTransient<IMessagesRepository, MessagesRepository>();
 
@@ -64,6 +68,9 @@ namespace ProjectAngular
             }
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
