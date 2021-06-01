@@ -41,6 +41,7 @@ namespace KursAspNetCorePodstawyBackendu
             var newUser = new ApplicationUser
             {
                 Email = userRegisterDto.Email,
+                UserName = userRegisterDto.Email,
                 FirstName = userRegisterDto.FirstName,
                 LastName = userRegisterDto.LastName,
             };

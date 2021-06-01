@@ -14,10 +14,18 @@ export class Message {
 export class TestComponent implements OnInit {
 
   backendResponse: string;
+  firstName: string;
+  lastName: string;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get("https://localhost:44364/" + "account" + "/getCurrentUser").subscribe(response => {
+      this.firstName = (response as any).firstName;
+      this.lastName = (response as any).lastName;
+    },
+      error => {
+      })
   }
 
   //this is request
@@ -26,7 +34,7 @@ export class TestComponent implements OnInit {
     message.content = "JakasWiadomosc";
     message.author = "Piotr Mierniczak";
 
-    this.http.post("https://localhost:5001/" + "kurs" + "/sendMessage", message).subscribe(response => {
+    this.http.post("https://localhost:44364/" + "kurs" + "/sendMessage", message).subscribe(response => {
       this.backendResponse = (response as any).content;
     },
       error => {
