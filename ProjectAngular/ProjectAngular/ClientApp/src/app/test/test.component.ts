@@ -26,7 +26,7 @@ export class TestComponent implements OnInit {
     message.content = "JakasWiadomosc";
     message.author = "Piotr Mierniczak";
 
-    this.http.post("https://localhost:44364/" + "kurs" + "/sendMessage", message).subscribe(response => {
+    this.http.post("https://localhost:5001/" + "kurs" + "/sendMessage", message).subscribe(response => {
       this.backendResponse = (response as any).content;
     },
       error => {
