@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KursAspNetCorePodstawyBackendu", "ProjectAngular\KursAspNetCorePodstawyBackendu.csproj", "{B7123FCA-2170-434A-B063-E22303AF00FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KursAspNetCorePodstawyBackendu.Database", "KursAspNetCorePodstawyBackendu.Database\KursAspNetCorePodstawyBackendu.Database.csproj", "{E4278C87-5E97-4280-8D6C-20C9FB84E5FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KursAspNetCorePodstawyBackendu.Database", "KursAspNetCorePodstawyBackendu.Database\KursAspNetCorePodstawyBackendu.Database.csproj", "{E4278C87-5E97-4280-8D6C-20C9FB84E5FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KursAspNetCorePodstawyBackendu.Domain", "KursAspNetCorePodstawyBackendu.Domain\KursAspNetCorePodstawyBackendu.Domain.csproj", "{4D125D37-7D78-496F-BB51-B084E323E396}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KursAspNetCorePodstawyBackendu.Services", "KursAspNetCorePodstawyBackendu.Services\KursAspNetCorePodstawyBackendu.Services.csproj", "{11352D9A-2265-46C7-90B0-8DE85F77295E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{E4278C87-5E97-4280-8D6C-20C9FB84E5FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4278C87-5E97-4280-8D6C-20C9FB84E5FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4278C87-5E97-4280-8D6C-20C9FB84E5FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D125D37-7D78-496F-BB51-B084E323E396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D125D37-7D78-496F-BB51-B084E323E396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D125D37-7D78-496F-BB51-B084E323E396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D125D37-7D78-496F-BB51-B084E323E396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11352D9A-2265-46C7-90B0-8DE85F77295E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11352D9A-2265-46C7-90B0-8DE85F77295E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11352D9A-2265-46C7-90B0-8DE85F77295E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11352D9A-2265-46C7-90B0-8DE85F77295E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

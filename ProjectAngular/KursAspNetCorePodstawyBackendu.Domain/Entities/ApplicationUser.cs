@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace KursAspNetCorePodstawyBackendu.Database
+namespace KursAspNetCorePodstawyBackendu.Domain
 {
     public class ApplicationUser : IdentityUser
     {

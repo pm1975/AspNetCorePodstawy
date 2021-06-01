@@ -1,13 +1,7 @@
-﻿using KursAspNetCorePodstawyBackendu.Database;
+﻿using KursAspNetCorePodstawyBackendu.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ProjectAngular.Controllers
 {
@@ -38,28 +32,28 @@ namespace ProjectAngular.Controllers
         {
             var refreshTime = _configuration.GetValue<int>("Application:RefreshTime");
 
-            var message = new Message
+            var messageDto = new MessageDto
             {
                 Content = $"My refresh time is: {refreshTime}",
                 Author = "Piotr Mierniczak"
             };
            
-            return Ok(message);
+            return Ok(messageDto);
         }
 
         [HttpPost]
         [Route("sendMessage")]
-        public IActionResult SendMessage([FromBody]Message message)
+        public IActionResult SendMessage([FromBody]MessageDto messageDto)
         {
             var messageEntitiy = new MessageEntity
             {
-                Content = message.Content
+                Content = messageDto.Content
             };
 
             var result = _messagesRepository.Add(messageEntitiy);
             if (result)
             {
-                return Ok(message);
+                return Ok(messageDto);
             }
 
             return NotFound();

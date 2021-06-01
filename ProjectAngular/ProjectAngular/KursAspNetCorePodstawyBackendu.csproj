@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.6" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
@@ -26,6 +26,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KursAspNetCorePodstawyBackendu.Database\KursAspNetCorePodstawyBackendu.Database.csproj" />
+    <ProjectReference Include="..\KursAspNetCorePodstawyBackendu.Domain\KursAspNetCorePodstawyBackendu.Domain.csproj" />
+    <ProjectReference Include="..\KursAspNetCorePodstawyBackendu.Services\KursAspNetCorePodstawyBackendu.Services.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

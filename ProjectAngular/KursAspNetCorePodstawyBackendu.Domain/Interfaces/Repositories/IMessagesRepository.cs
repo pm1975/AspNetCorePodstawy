@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KursAspNetCorePodstawyBackendu.Database
+namespace KursAspNetCorePodstawyBackendu.Domain
 {
     public interface IMessagesRepository
     {

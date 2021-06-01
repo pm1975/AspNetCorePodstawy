@@ -1,4 +1,4 @@
-﻿namespace KursAspNetCorePodstawyBackendu
+﻿namespace KursAspNetCorePodstawyBackendu.Domain
 {
     public class UserRegisterDto
     {
