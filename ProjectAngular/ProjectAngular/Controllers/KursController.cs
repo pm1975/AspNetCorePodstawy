@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using KursAspNetCorePodstawyBackendu.Database;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -14,10 +16,19 @@ namespace ProjectAngular.Controllers
     public class KursController : ControllerBase
     {
         private readonly IConfiguration _configuration;
+        private readonly IMessagesRepository _messagesRepository;
 
-        public KursController(IConfiguration configuration)
+        public KursController(IConfiguration configuration, IMessagesRepository messagesRepository)
         {
             _configuration = configuration;
+            _messagesRepository = messagesRepository;
+        }
+
+        [Authorize("Administrator")]
+        [Route("getSomeSecretData")]
+        public IActionResult GetSomeSecretData()
+        {
+            return Ok("SomeSecretKey");
         }
 
         //This is endpoint
@@ -40,7 +51,18 @@ namespace ProjectAngular.Controllers
         [Route("sendMessage")]
         public IActionResult SendMessage([FromBody]Message message)
         {
-            return Ok(message);
+            var messageEntitiy = new MessageEntity
+            {
+                Content = message.Content
+            };
+
+            var result = _messagesRepository.Add(messageEntitiy);
+            if (result)
+            {
+                return Ok(message);
+            }
+
+            return NotFound();
         }
     }
 }
