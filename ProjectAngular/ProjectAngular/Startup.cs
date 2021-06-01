@@ -34,7 +34,8 @@ namespace ProjectAngular
             {
                 config.SignIn.RequireConfirmedEmail = true;
             })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddTransient<IMessagesRepository, MessagesRepository>();
 
